@@ -8,7 +8,7 @@
       ls = "exa";
       find = "fd";
       grep = "rg";
-      cat = "bat";
+      cat = "bat --plain --pager=none";
       ".." = "cd ..";
     };
 

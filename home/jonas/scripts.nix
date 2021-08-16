@@ -9,7 +9,7 @@
         app:shmFile=/dev/kvmfr0 \
         win:fullScreen \
         win:showFPS=false \
-        input:mouseRedraw=true \
+        win:jitRender=true \
         spice:enable=no \
     '';
   };

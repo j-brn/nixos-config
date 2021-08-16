@@ -31,6 +31,7 @@
 
     # browser
     chromium
+    google-chrome
     firefox-wayland
 
     # music
@@ -61,6 +62,8 @@
     bottom
     topgrade
     bat
+    wrk
+    procs
 
     # vm
     looking-glass-client
