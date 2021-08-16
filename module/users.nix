@@ -21,6 +21,7 @@
       "dialout"
       "adbusers"
       "wireshark"
+      "realtime"
     ];
     shell = pkgs.zsh;
   };

@@ -43,6 +43,20 @@ in
 
   home.keyboard.layout = "eu";
 
+  # add systemd target to be able to start user services with sway
+  systemd.user.targets.sway-session = 
+  {
+    Unit = {
+      Description = "sway compositor session";
+    };
+
+    Target = {
+      BindsTo = [ "graphical-session.target" ];
+      Wants = [ "graphical-session-pre.target" ];
+      After = [ "graphical-session-pre.target" ];
+    };
+  };
+
   wayland = {
     windowManager.sway = {
       enable = true;
@@ -73,6 +87,7 @@ in
           };
           "*" = {
             bg = "~/Pictures/wallpaper.png fill";
+            max_render_time = "4";
           };
         };
         modifier = "Mod4";
@@ -147,8 +162,16 @@ in
             modifier = "Mod4";
             criteria = [
               { title = "SpeedCrunch"; }
+              { title = "Bitwarden"; }
+              { title = "Volume Control"; }
             ];
           };
+          window.commands = [
+            {
+              command = "max_render_time 4";
+              criteria = { app_id = "looking-glass-client"; };
+            }
+          ];
           bars = [
             {
               position = "bottom";

@@ -11,7 +11,7 @@
   environment.systemPackages = with pkgs; [
     blueman
     pavucontrol
-    pulseeffects-pw
+    easyeffects
   ];
 
   hardware = {
@@ -42,18 +42,56 @@
     };
   };
 
-  systemd.user.services.pulseeffects = {
-    description = "Pulseeffects background service";
-    enable = false;
+  # allow realtime priority for audio group
+  security.pam.loginLimits = [
+    {
+      domain = "@audio";
+      item = "memlock";
+      type = "-";
+      value = "unlimited";
+    }
+    {
+      domain = "@audio";
+      item = "rtprio";
+      type = "-";
+      value = "99";
+    }
+    {
+      domain = "@audio";
+      item = "nofile";
+      type = "soft";
+      value = "99999";
+    }
+    {
+      domain = "@audio";
+      item = "nofile";
+      type = "hard";
+      value = "99999";
+    }
+    {
+      domain = "@audio";
+      item = "nice";
+      type = "-";
+      value = "-15";
+    }
+  ];
+
+  systemd.user.services.easyeffects = {
+    description = "Easyeffects background service";
+    enable = true;
     serviceConfig = {
-      ExecStart = "${pkgs.pulseeffects-pw}/bin/pulseeffects --gapplication-service";
-      ExecStop = "pulseeffects -q";
+      ExecStart = "${pkgs.easyeffects}/bin/easyeffects --gapplication-service";
+      ExecStop = "easyeffects -q"; 
+
+      # allow rt prio
+      LimitRTPRIO = "99";
+      LimitNOFILE = "99999";
       CPUSchedulingPolicy = "rr";
     };
     environment = {
       DISPLAY = ":0";
     };
-    wantedBy = [ "graphical-session.target" ];
+    wantedBy = [ "sway-session.target" ];
     after = [ "pipewire.service" ];
   };
 }
