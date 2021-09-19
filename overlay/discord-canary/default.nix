@@ -1,7 +1,7 @@
 { super, ... }:
 let
-  version = "0.0.126";
-  checksum = "0apj1c4my17ca452wdga2zb82iqsbljbbg2fylfdvslx286r7dhj";
+  version = "0.0.130";
+  checksum = "1razxxx16bjzhv9909qa08dmlmgg7ji1vckvkggw7syi125r5aai";
 in
 {
    discord-canary = super.discord-canary.overrideAttrs (old: {
