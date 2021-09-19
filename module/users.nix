@@ -13,15 +13,13 @@
       "docker"
       "wireshark"
       "video"
-      "adbusers"
-      "vboxusers"
       "libvirtd"
       "audio"
       "input"
       "dialout"
-      "adbusers"
-      "wireshark"
       "realtime"
+      "scanner"
+      "lp"
     ];
     shell = pkgs.zsh;
   };
