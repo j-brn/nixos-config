@@ -64,6 +64,8 @@
     bat
     wrk
     procs
+    act
+    htmlq
 
     # vm
     looking-glass-client
@@ -108,8 +110,12 @@
     # calculator
     speedcrunch
 
+    # scanner
+    gnome.simple-scan
+
     # office
-    onlyoffice-bin
+    # onlyoffice-bin
+    libreoffice-fresh
     okular
   ];
 }
