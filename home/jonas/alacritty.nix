@@ -5,7 +5,7 @@
     settings = {
       shell.program = "${pkgs.zsh}/bin/zsh";
       #args = [ "-u" ];
-      background_opacity = 0.8;
+      background_opacity = 0.95;
       env.TERM = "xterm-256color";
       colors = {
         normal = {
