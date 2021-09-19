@@ -1,9 +1,6 @@
 { super, lib, ...}:
 {
-  linuxZenWMuQSS = super.linuxPackagesFor (super.linux_zen.override {
-    structuredExtraConfig = with lib.kernel; {
-      SCHED_MUQSS = yes;
-      PREEMPT_RT = yes;
-    };
+  linuxPackages_zen = super.linuxPackagesFor (super.linuxKernel.kernels.linux_zen.override {
+    ignoreConfigErrors = true;
   });
 }

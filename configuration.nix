@@ -10,16 +10,11 @@
   boot = {
     tmpOnTmpfs = true;
 
-    extraModulePackages = with config.boot.kernelPackages; [
-      v4l2loopback
-      akvcam
-    ];
-
     initrd = {
       availableKernelModules = [
         "nvme" "xhci_pci" "ahci" "usbhid" "sd_mod"
       ];
-      kernelModules = [ "dm-snapshot" "amdgpu" "kvm" "kvm-amd" "v4l2loopback" "akvcam" ];
+      kernelModules = [ "dm-snapshot" "amdgpu" "kvm" "kvm-amd" ];
     };
 
     loader = {
@@ -27,7 +22,7 @@
       efi.canTouchEfiVariables = true;
     };
 
-    kernelPackages = pkgs.linuxZenWMuQSS;
+    #kernelPackages = pkgs.linuxZenWMuQSS;
 
     kernelParams = [
       "vhost_net.experimental_zcopytx=1"
